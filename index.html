@@ -940,5 +940,22 @@
   Honeymoon 2026 — Last updated: April 5, 2026
 </footer>
 
+<script>
+// Smooth keyboard scrolling (arrow keys, Page Up/Down, Space)
+document.addEventListener('keydown', (e) => {
+  const scrollKeys = {
+    ArrowDown: 120,
+    ArrowUp: -120,
+    PageDown: window.innerHeight * 0.85,
+    PageUp: -window.innerHeight * 0.85,
+    ' ': window.innerHeight * 0.85,
+  };
+  const delta = scrollKeys[e.key];
+  if (delta !== undefined) {
+    e.preventDefault();
+    window.scrollBy({ top: delta, behavior: 'smooth' });
+  }
+});
+</script>
 </body>
 </html>
