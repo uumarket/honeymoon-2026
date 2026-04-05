@@ -521,8 +521,121 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .day-card, .card, .budget-item, .island-item {
+  .day-card, .card, .budget-item, .island-item, .hotel-showcase {
     animation: fadeUp 0.5s ease both;
+  }
+
+  /* ── Hotel Showcase ── */
+  .hotel-showcase {
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+  }
+
+  .hotel-showcase .hotel-gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 200px 200px;
+    gap: 3px;
+  }
+
+  .hotel-showcase .hotel-gallery .img-main {
+    grid-row: 1 / 3;
+  }
+
+  .hotel-showcase .hotel-gallery .img-slot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .hotel-showcase .hotel-info {
+    padding: 1.8rem;
+  }
+
+  .hotel-showcase .hotel-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .hotel-showcase .hotel-location {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+
+  .hotel-showcase .hotel-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+
+  .hotel-showcase .hotel-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .hotel-showcase .htag {
+    display: inline-block;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+  }
+
+  .hotel-showcase .hotel-nights {
+    display: inline-block;
+    background: rgba(212,168,83,0.15);
+    border: 1px solid rgba(212,168,83,0.25);
+    border-radius: 20px;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.72rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .hotel-noimg {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    position: relative;
+  }
+
+  .hotel-noimg.ayana-bg {
+    background: linear-gradient(135deg, #1a3a4a 0%, #0d6b7a 50%, #1a8fb5 100%);
+  }
+
+  .hotel-noimg .noimg-label {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  @media (max-width: 600px) {
+    .hotel-showcase .hotel-gallery {
+      grid-template-columns: 1fr;
+      grid-template-rows: 220px 120px;
+    }
+    .hotel-showcase .hotel-gallery .img-main {
+      grid-row: auto;
+    }
+    .hotel-showcase .hotel-gallery > :nth-child(3) {
+      display: none;
+    }
   }
 </style>
 </head>
@@ -596,6 +709,112 @@
       <div class="desc">科莫多龍（全球唯一）<br>粉紅沙灘<br>鬼蝠魟浮潛</div>
     </div>
   </div>
+</section>
+
+<div class="divider">~ ~ ~</div>
+
+<!-- ════════ HOTELS ════════ -->
+<section>
+  <div class="section-title">住宿</div>
+  <p class="section-sub">四間飯店，四種風格 — 每一站都是不同的體驗</p>
+
+  <!-- Kaamala -->
+  <div class="hotel-showcase">
+    <div class="hotel-gallery">
+      <img class="img-slot img-main" src="https://s.luxury-hotels.com/data/Photos/1920x1080w/17433/1743342/1743342706/Kaamala-Resort-Spa-Ubud-By-Ini-Vie-Hospitality-Exterior.JPEG" alt="Kaamala Resort Ubud">
+      <img class="img-slot" src="https://s.luxury-hotels.com/data/Photos/1920x1080w/17070/1707015/1707015065/Kaamala-Resort-Spa-Ubud-By-Ini-Vie-Hospitality-Exterior.JPEG" alt="Kaamala Villa">
+      <img class="img-slot" src="https://s.luxury-hotels.com/data/Photos/1920x1080w/17433/1743342/1743342687/Kaamala-Resort-Spa-Ubud-By-Ini-Vie-Hospitality-Exterior.JPEG" alt="Kaamala Pool">
+    </div>
+    <div class="hotel-info">
+      <div class="hotel-nights">🌿 Night 1</div>
+      <div class="hotel-name">Kaamala Resort & Spa</div>
+      <div class="hotel-location">Ubud・Jl. Bisma</div>
+      <p class="hotel-desc">
+        藏在 Ubud Bisma 路上的精品度假村，走路 10 分鐘到猴林。每間 Villa 都有私人泳池和按摩浴缸，窗外是 180° 的梯田與河谷叢林。無邊際泳池懸在山谷邊緣，俯瞰 Tukad Wos 河。
+      </p>
+      <div class="hotel-tags">
+        <span class="htag">私人泳池 Villa</span>
+        <span class="htag">梯田景</span>
+        <span class="htag">按摩浴缸</span>
+        <span class="htag">蜜月佈置</span>
+        <span class="htag">~NT$5,500/晚</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Amankila -->
+  <div class="hotel-showcase">
+    <div class="hotel-gallery">
+      <img class="img-slot img-main" src="https://www.aman.com/sites/default/files/styles/central_carousel_large/public/2022-10/Amankila_Main_Pool.jpg?itok=Hsry22Ay" alt="Amankila 三層階梯泳池">
+      <img class="img-slot" src="https://www.aman.com/sites/default/files/styles/full_size_extra_large/public/2024-05/amankila_bali_-_interior_suite.jpg?itok=bEXW3kNt" alt="Amankila Suite">
+      <img class="img-slot" src="https://www.aman.com/sites/default/files/styles/central_carousel_large/public/2022-10/Amankila_Resort.jpg?itok=Ypsvu5Zg" alt="Amankila Resort">
+    </div>
+    <div class="hotel-info">
+      <div class="hotel-nights">💎 Night 2–4</div>
+      <div class="hotel-name">Amankila</div>
+      <div class="hotel-location">東峇里・Karangasem・面龍目海峽</div>
+      <p class="hotel-desc">
+        安縵在峇里島東海岸的旗艦度假村。34 間茅草頂 Pavilion 沿山坡而下，通往招牌的<strong>三層階梯無邊際泳池</strong>——如梯田般層疊流入大海，對岸是龍目島的火山輪廓。全飯店僅 31 間房，私人沙灘白沙平靜。遠離觀光區的絕對寧靜。
+      </p>
+      <div class="hotel-tags">
+        <span class="htag">三層階梯泳池</span>
+        <span class="htag">私人沙灘</span>
+        <span class="htag">Garden Pavilion 94m²</span>
+        <span class="htag">含早餐</span>
+        <span class="htag">僅 31 間房</span>
+        <span class="htag">~NT$46,000/晚</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BASK Gili Meno -->
+  <div class="hotel-showcase">
+    <div class="hotel-gallery">
+      <img class="img-slot img-main" src="https://cdn.prod.website-files.com/69b8994d96919714aecf14b0/69b8994d96919714aecf14e3_694f8c99e6ef6f1b4fbe4058_470186261_18445570516069017_8086243588537778575_n.jpg" alt="BASK Gili Meno Beach">
+      <img class="img-slot" src="https://cdn.prod.website-files.com/69b8994d96919714aecf14b0/69b8994d96919714aecf1702_IMG_1187_result.avif" alt="BASK Villa">
+      <img class="img-slot" src="https://cdn.prod.website-files.com/69b8994d96919714aecf14b0/69b8994d96919714aecf1503_478649422_640889131788980_3378075890988638968_n.avif" alt="BASK Pool">
+    </div>
+    <div class="hotel-info">
+      <div class="hotel-nights">🐢 Night 5–7</div>
+      <div class="hotel-name">BASK Gili Meno</div>
+      <div class="hotel-location">Gili Meno・印尼蜜月島</div>
+      <p class="hotel-desc">
+        Gili Meno 上的精品度假村，僅 13 間 Villa，每間都面海。35 公尺無邊際泳池、地下酒吧 Rosalee、沙灘餐廳。飯店前方的 <strong>BASK Nest 水下雕像群</strong>是島上最著名的浮潛點——48 尊真人大小雕像沉在海底，珊瑚正在包覆它們。零汽車、零噪音。
+      </p>
+      <div class="hotel-tags">
+        <span class="htag">面海 Villa</span>
+        <span class="htag">35m 無邊際泳池</span>
+        <span class="htag">水下雕像群</span>
+        <span class="htag">僅 13 間房</span>
+        <span class="htag">地下酒吧</span>
+        <span class="htag">~NT$8,400/晚</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AYANA Komodo -->
+  <div class="hotel-showcase">
+    <div class="hotel-noimg ayana-bg">
+      🐉
+      <span class="noimg-label">AYANA Komodo Waecicu Beach</span>
+    </div>
+    <div class="hotel-info">
+      <div class="hotel-nights">🐉 Night 8–9</div>
+      <div class="hotel-name">AYANA Komodo Waecicu Beach</div>
+      <div class="hotel-location">Labuan Bajo・科莫多國家公園入口</div>
+      <p class="hotel-desc">
+        Labuan Bajo 唯一的五星級海濱度假村。私人白沙灘、兩座泳池、七間餐廳。UNIQUE 屋頂酒吧能看到 Labuan Bajo 海灣的完整日落。距離機場只要 15 分鐘車程，是前往科莫多國家公園包船的最佳出發點。
+      </p>
+      <div class="hotel-tags">
+        <span class="htag">私人沙灘</span>
+        <span class="htag">屋頂酒吧</span>
+        <span class="htag">7 間餐廳</span>
+        <span class="htag">科莫多包船出發點</span>
+        <span class="htag">~NT$5,500/晚</span>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <div class="divider">~ ~ ~</div>
