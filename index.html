@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蜜月行程 — 印尼跳島 2026.06</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+  :root {
+    --ocean: #0b4f6c;
+    --ocean-deep: #062a3a;
+    --ocean-light: #1a8fb5;
+    --sand: #f5e6c8;
+    --coral: #e8836b;
+    --green: #2d8654;
+    --pink: #e8a0b4;
+    --gold: #d4a853;
+    --text: #e8e4df;
+    --text-dim: rgba(232,228,223,0.55);
+    --card-bg: rgba(255,255,255,0.06);
+    --card-border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--ocean-deep);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(170deg, #041e2b 0%, var(--ocean) 50%, var(--ocean-light) 100%);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,168,83,0.08) 0%, transparent 70%);
+    top: 10%; right: -10%;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero .date {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .hero .subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-bottom: 3rem;
+    max-width: 500px;
+  }
+
+  /* Route */
+  .route {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .route-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .route-dot {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .route-label {
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-align: center;
+    max-width: 90px;
+    line-height: 1.3;
+  }
+
+  .route-label .nights {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    display: block;
+  }
+
+  .route-arrow {
+    padding: 0 0.6rem;
+    color: var(--text-dim);
+    font-size: 0.6rem;
+    text-align: center;
+  }
+
+  .route-arrow .dash {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    margin: 0.3rem auto;
+    position: relative;
+  }
+
+  .route-arrow .dash::after {
+    content: '>';
+    position: absolute;
+    right: -4px;
+    top: -7px;
+    font-size: 0.5rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── Sections ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  section {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .section-sub {
+    font-weight: 300;
+    color: var(--text-dim);
+    margin-bottom: 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .card p {
+    font-weight: 300;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 0.2rem 0.8rem;
+    font-size: 0.75rem;
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── Day card ── */
+  .day-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .day-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .day-card.bali::before { background: var(--green); }
+  .day-card.aman::before { background: var(--gold); }
+  .day-card.gili::before { background: var(--ocean-light); }
+  .day-card.komodo::before { background: var(--coral); }
+  .day-card.home::before { background: var(--text-dim); }
+
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .day-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .day-header .date-badge {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: rgba(255,255,255,0.05);
+    padding: 0.15rem 0.6rem;
+    border-radius: 12px;
+  }
+
+  .day-card .hotel {
+    background: rgba(212,168,83,0.1);
+    border: 1px solid rgba(212,168,83,0.2);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--gold);
+  }
+
+  .day-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .day-card li {
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .day-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+  }
+
+  .day-card .highlight {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  /* ── Komodo route ── */
+  .boat-route {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 1rem 0;
+  }
+
+  .boat-stop {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.6rem 0;
+  }
+
+  .boat-stop .time {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    min-width: 50px;
+    text-align: right;
+    padding-top: 0.1rem;
+  }
+
+  .boat-stop .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--coral);
+    margin-top: 0.3rem;
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .boat-stop:not(:last-child) .dot::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 10px;
+    width: 2px;
+    height: 30px;
+    background: rgba(232,131,107,0.3);
+  }
+
+  .boat-stop .info {
+    font-size: 0.85rem;
+    font-weight: 300;
+  }
+
+  .boat-stop .info strong {
+    font-weight: 500;
+    color: #fff;
+  }
+
+  /* ── Budget ── */
+  .budget-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .budget-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .budget-item .amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .budget-item .label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  .budget-total {
+    background: linear-gradient(135deg, rgba(212,168,83,0.1), rgba(232,131,107,0.1));
+    border: 1px solid rgba(212,168,83,0.2);
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .budget-total .amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .budget-total .note {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-top: 0.5rem;
+  }
+
+  /* ── Tables ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin: 1rem 0;
+  }
+
+  th {
+    text-align: left;
+    padding: 0.7rem 0.8rem;
+    font-weight: 500;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  td {
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-weight: 300;
+    vertical-align: top;
+  }
+
+  td:last-child {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  .row-total td {
+    font-weight: 600;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 0.8rem;
+  }
+
+  /* ── Island comparison ── */
+  .island-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .island-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .island-item .emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+  .island-item .name { font-weight: 600; margin-bottom: 0.2rem; font-size: 0.95rem; }
+  .island-item .role { font-size: 0.75rem; color: var(--gold); margin-bottom: 0.5rem; }
+  .island-item .desc { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+
+  /* ── Rhythm bar ── */
+  .rhythm {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 40px;
+    margin: 1.5rem 0;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+
+  .rhythm > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  .rhythm .r-bali { background: rgba(45,134,84,0.4); flex: 1; }
+  .rhythm .r-aman { background: rgba(212,168,83,0.3); flex: 3; }
+  .rhythm .r-gili { background: rgba(26,143,181,0.4); flex: 3; }
+  .rhythm .r-komodo { background: rgba(232,131,107,0.3); flex: 2; }
+  .rhythm .r-home { background: rgba(255,255,255,0.05); flex: 1; }
+
+  /* ── Divider ── */
+  .divider {
+    text-align: center;
+    padding: 2rem 0;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    letter-spacing: 0.5rem;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .island-grid { grid-template-columns: 1fr; }
+    .budget-grid { grid-template-columns: repeat(2, 1fr); }
+    .rhythm { font-size: 0.6rem; height: 34px; }
+    .route-arrow .dash { width: 20px; }
+    .day-card { padding: 1.5rem; }
+    section { padding: 3rem 0; }
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .day-card, .card, .budget-item, .island-item {
+    animation: fadeUp 0.5s ease both;
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<div class="hero">
+  <h1>Our Honeymoon</h1>
+  <div class="date">June 10 – 19, 2026</div>
+  <p class="subtitle">峇里島 → Gili Meno → 科莫多<br>文化、放空、冒險 — 三座島，三種體驗</p>
+
+  <div class="route">
+    <div class="route-node">
+      <div class="route-dot">🌿</div>
+      <div class="route-label">Ubud<span class="nights">1 晚</span></div>
+    </div>
+    <div class="route-arrow"><div class="dash"></div></div>
+    <div class="route-node">
+      <div class="route-dot" style="border-color:var(--gold)">💎</div>
+      <div class="route-label">Amankila<span class="nights">3 晚</span></div>
+    </div>
+    <div class="route-arrow">快艇<div class="dash"></div></div>
+    <div class="route-node">
+      <div class="route-dot" style="border-color:var(--ocean-light)">🐢</div>
+      <div class="route-label">Gili Meno<span class="nights">3 晚</span></div>
+    </div>
+    <div class="route-arrow">飛機<div class="dash"></div></div>
+    <div class="route-node">
+      <div class="route-dot" style="border-color:var(--coral)">🐉</div>
+      <div class="route-label">科莫多<span class="nights">2 晚</span></div>
+    </div>
+    <div class="route-arrow"><div class="dash"></div></div>
+    <div class="route-node">
+      <div class="route-dot">✈️</div>
+      <div class="route-label">回家<span class="nights">6/19 晚</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ RHYTHM ════════ -->
+<div class="container">
+<section>
+  <div class="section-title">行程節奏</div>
+  <p class="section-sub">從文化出發，在放空中沉澱，以冒險收尾</p>
+
+  <div class="rhythm">
+    <div class="r-bali">🌿 文化</div>
+    <div class="r-aman">💎 奢華放空</div>
+    <div class="r-gili">🐢 小島蜜月</div>
+    <div class="r-komodo">🐉 冒險</div>
+    <div class="r-home">✈️</div>
+  </div>
+
+  <div class="island-grid">
+    <div class="island-item">
+      <div class="emoji">🌿</div>
+      <div class="name">峇里島</div>
+      <div class="role">暖身</div>
+      <div class="desc">梯田、聖泉寺、猴林<br>Amankila 階梯泳池<br>Couple SPA</div>
+    </div>
+    <div class="island-item">
+      <div class="emoji">🐢</div>
+      <div class="name">Gili Meno</div>
+      <div class="role">蜜月核心</div>
+      <div class="desc">零噪音的珊瑚小島<br>跟海龜一起游泳<br>沙灘燭光晚餐</div>
+    </div>
+    <div class="island-item">
+      <div class="emoji">🐉</div>
+      <div class="name">科莫多</div>
+      <div class="role">冒險收尾</div>
+      <div class="desc">科莫多龍（全球唯一）<br>粉紅沙灘<br>鬼蝠魟浮潛</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">~ ~ ~</div>
+
+<!-- ════════ ITINERARY ════════ -->
+<section>
+  <div class="section-title">每日行程</div>
+  <p class="section-sub">9 晚 10 天，4 個住宿點，0 趕路</p>
+
+  <!-- Day 1 -->
+  <div class="day-card bali">
+    <div class="day-header">
+      <h3>🌿 Day 1 — 抵達 Ubud</h3>
+      <span class="date-badge">6/10 二</span>
+    </div>
+    <ul>
+      <li>09:10 桃園起飛（華航直飛，5h25m）</li>
+      <li>14:35 抵達峇里島 DPS</li>
+      <li>包車前往 Ubud（~1.5h）</li>
+      <li>傍晚 <span class="highlight">Tegallalang 梯田</span>夕陽散步</li>
+      <li>晚餐：稻田景觀餐廳</li>
+    </ul>
+    <div class="hotel">🏨 Kaamala Resort — 私人泳池 Villa・180° 梯田景</div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-card aman">
+    <div class="day-header">
+      <h3>💎 Day 2 — Ubud → Amankila</h3>
+      <span class="date-badge">6/11 三</span>
+    </div>
+    <ul>
+      <li>早上 <span class="highlight">Sacred Monkey Forest</span> 聖猴森林</li>
+      <li>退房，包車前往 Amankila（~1.5h）</li>
+      <li>途中停 <span class="highlight">Tirta Empul 聖泉寺</span>（順路）</li>
+      <li>14:00 入住 Amankila</li>
+      <li>下午：三層階梯無邊際泳池</li>
+      <li>Villa 陽台看龍目海峽日落</li>
+    </ul>
+    <div class="hotel">🏨 Amankila — Garden Pavilion・面龍目海峽・私人沙灘</div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-card aman">
+    <div class="day-header">
+      <h3>💎 Day 3 — Amankila 慢活</h3>
+      <span class="date-badge">6/12 四</span>
+    </div>
+    <ul>
+      <li>睡到自然醒</li>
+      <li>早餐 à la carte（含在房價）</li>
+      <li>上午 <span class="highlight">Couple SPA</span>（2-2.5 小時）</li>
+      <li>下午：私人沙灘 / 水上活動</li>
+      <li>Aman afternoon tea</li>
+      <li>晚餐：餐廳或 Villa 內用</li>
+    </ul>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day-card aman">
+    <div class="day-header">
+      <h3>💎 Day 4 — Amankila 最後一天</h3>
+      <span class="date-badge">6/13 五</span>
+    </div>
+    <ul>
+      <li>泳池、瑜珈課、或再做一次 SPA</li>
+      <li>最後享受私人沙灘</li>
+      <li>Farewell dinner</li>
+      <li>早點休息，明天移動</li>
+    </ul>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-card gili">
+    <div class="day-header">
+      <h3>🐢 Day 5 — 移動到 Gili Meno</h3>
+      <span class="date-badge">6/14 六</span>
+    </div>
+    <ul>
+      <li>Aman 接送到 Padang Bai 碼頭</li>
+      <li>快艇 → Gili Meno（~2h）</li>
+      <li>入住 BASK，沙灘放空</li>
+      <li>傍晚：環島散步（走路 1.5h 繞完整座島）</li>
+      <li><span class="highlight">沙灘燭光晚餐</span> 🕯️</li>
+    </ul>
+    <div class="hotel">🏨 BASK Gili Meno — 面海・零汽車零摩托車的靜謐小島</div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day-card gili">
+    <div class="day-header">
+      <h3>🐢 Day 6 — 海洋日</h3>
+      <span class="date-badge">6/15 日</span>
+    </div>
+    <ul>
+      <li>上午 <span class="highlight">浮潛</span>：海龜、水下雕像群、珊瑚花園</li>
+      <li>島上海鮮午餐</li>
+      <li>下午：Kayak 或發呆亭放空</li>
+      <li>西岸看夕陽（對面是龍目島火山）</li>
+      <li>沙灘海鮮晚餐</li>
+    </ul>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="day-card gili">
+    <div class="day-header">
+      <h3>🐢 Day 7 — Gili + 龍目島</h3>
+      <span class="date-badge">6/16 一</span>
+    </div>
+    <ul>
+      <li>上午：自由浮潛或睡到自然醒</li>
+      <li>搭船到龍目島本島（15 分鐘）</li>
+      <li><span class="highlight">Sasak 傳統村落</span>或 Tanjung Aan 沙灘</li>
+      <li>回 Gili Meno</li>
+      <li>最後一晚 Gili 晚餐</li>
+    </ul>
+  </div>
+
+  <!-- Day 8 -->
+  <div class="day-card komodo">
+    <div class="day-header">
+      <h3>🐉 Day 8 — 飛往科莫多</h3>
+      <span class="date-badge">6/17 二</span>
+    </div>
+    <ul>
+      <li>早班快艇+車 → 龍目島機場</li>
+      <li>11:05 Wings Air → 12:20 抵達 Labuan Bajo</li>
+      <li>入住 AYANA Komodo</li>
+      <li>下午：小鎮散步</li>
+      <li>漁港夕陽 + 海鮮晚餐</li>
+    </ul>
+    <div class="hotel">🏨 AYANA Komodo — 面海・Labuan Bajo 最佳位置</div>
+  </div>
+
+  <!-- Day 9 -->
+  <div class="day-card komodo">
+    <div class="day-header">
+      <h3>🐉 Day 9 — 科莫多包船一日遊</h3>
+      <span class="date-badge">6/18 三</span>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-dim); margin-bottom:1rem;">整天包船跳島行程 — 蜜月最「哇」的一天</p>
+
+    <div class="boat-route">
+      <div class="boat-stop">
+        <span class="time">07:00</span>
+        <div class="dot"></div>
+        <div class="info">Labuan Bajo <strong>出發</strong></div>
+      </div>
+      <div class="boat-stop">
+        <span class="time">08:30</span>
+        <div class="dot"></div>
+        <div class="info"><strong>Komodo Island</strong> — Ranger 帶隊看科莫多龍</div>
+      </div>
+      <div class="boat-stop">
+        <span class="time">10:30</span>
+        <div class="dot"></div>
+        <div class="info"><strong>Pink Beach</strong> — 粉紅沙灘浮潛</div>
+      </div>
+      <div class="boat-stop">
+        <span class="time">12:00</span>
+        <div class="dot"></div>
+        <div class="info">船上午餐</div>
+      </div>
+      <div class="boat-stop">
+        <span class="time">13:00</span>
+        <div class="dot"></div>
+        <div class="info"><strong>Manta Point</strong> — 浮潛看鬼蝠魟</div>
+      </div>
+      <div class="boat-stop">
+        <span class="time">15:00</span>
+        <div class="dot"></div>
+        <div class="info"><strong>Padar Island</strong> — 登頂俯瞰三色海灣</div>
+      </div>
+      <div class="boat-stop">
+        <span class="time">17:00</span>
+        <div class="dot"></div>
+        <div class="info">回 Labuan Bajo — <strong>蜜月慶祝晚餐</strong> 🥂</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Day 10 -->
+  <div class="day-card home">
+    <div class="day-header">
+      <h3>✈️ Day 10 — 回家</h3>
+      <span class="date-badge">6/19 四</span>
+    </div>
+    <ul>
+      <li>08:40 LBJ → 09:50 DPS（AirAsia 直飛）</li>
+      <li>機場附近午餐 + 買伴手禮</li>
+      <li>15:55 華航直飛 → <span class="highlight">21:20 抵達桃園</span></li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider">~ ~ ~</div>
+
+<!-- ════════ BUDGET ════════ -->
+<section>
+  <div class="section-title">費用估算</div>
+  <p class="section-sub">兩人總計・新台幣・Amankila 待報價確認</p>
+
+  <div class="budget-total">
+    <div class="amount">NT$ 361,000</div>
+    <div class="note">Amankila 報價回來後預計降到 ~$330,000–340,000</div>
+  </div>
+
+  <div class="budget-grid">
+    <div class="budget-item">
+      <div class="amount" style="color:var(--gold)">$212K</div>
+      <div class="label">住宿（59%）</div>
+    </div>
+    <div class="budget-item">
+      <div class="amount" style="color:var(--ocean-light)">$93K</div>
+      <div class="label">交通（26%）</div>
+    </div>
+    <div class="budget-item">
+      <div class="amount" style="color:var(--sand)">$19K</div>
+      <div class="label">餐飲（5%）</div>
+    </div>
+    <div class="budget-item">
+      <div class="amount" style="color:var(--coral)">$25K</div>
+      <div class="label">活動（7%）</div>
+    </div>
+    <div class="budget-item">
+      <div class="amount" style="color:var(--text-dim)">$12K</div>
+      <div class="label">雜支（3%）</div>
+    </div>
+  </div>
+
+  <!-- Accommodation -->
+  <div class="card">
+    <h3>🏨 住宿</h3>
+    <table>
+      <thead>
+        <tr><th>日期</th><th>飯店</th><th>晚數</th><th>費用</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>6/10</td><td>Kaamala Resort・Ubud</td><td>1</td><td>$5,500</td></tr>
+        <tr><td>6/11-13</td><td>Amankila・東峇里</td><td>3</td><td>$170,000</td></tr>
+        <tr><td>6/14-16</td><td>BASK・Gili Meno</td><td>3</td><td>$25,400</td></tr>
+        <tr><td>6/17-18</td><td>AYANA・Komodo</td><td>2</td><td>$11,000</td></tr>
+        <tr class="row-total"><td></td><td></td><td>9 晚</td><td>$211,900</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Transport -->
+  <div class="card">
+    <h3>✈️ 交通</h3>
+    <table>
+      <thead>
+        <tr><th>段</th><th>方式</th><th>費用</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TPE ↔ DPS</td><td>華航直飛來回 × 2 人</td><td>$73,748</td></tr>
+        <tr><td>DPS → Ubud</td><td>包車</td><td>$1,500</td></tr>
+        <tr><td>Ubud → Amankila</td><td>包車（Aman 可能含）</td><td>$1,500</td></tr>
+        <tr><td>Bali → Gili Meno</td><td>快艇</td><td>$2,400</td></tr>
+        <tr><td>Gili → LOP 機場</td><td>快艇 + 車</td><td>$2,000</td></tr>
+        <tr><td>LOP → LBJ</td><td>Wings Air 直飛 × 2</td><td>$7,938</td></tr>
+        <tr><td>LBJ → DPS</td><td>AirAsia 直飛 × 2</td><td>$4,138</td></tr>
+        <tr class="row-total"><td></td><td></td><td>$93,224</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Activities -->
+  <div class="card">
+    <h3>🎯 活動</h3>
+    <table>
+      <thead>
+        <tr><th>地點</th><th>活動</th><th>費用</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ubud</td><td>梯田 + 猴林 + 聖泉寺</td><td>$720</td></tr>
+        <tr><td>Amankila</td><td>Couple SPA × 1</td><td>$5,000</td></tr>
+        <tr><td>Amankila</td><td>半日包車</td><td>$1,500</td></tr>
+        <tr><td>Gili Meno</td><td>浮潛 + Kayak + 龍目島</td><td>$4,000</td></tr>
+        <tr><td>科莫多</td><td>國家公園門票 + 浮潛許可</td><td>$2,910</td></tr>
+        <tr><td>科莫多</td><td>包船一日遊（半私人）</td><td>$10,000</td></tr>
+        <tr class="row-total"><td></td><td></td><td>$24,130</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Meals -->
+  <div class="card">
+    <h3>🍽️ 餐飲</h3>
+    <table>
+      <thead>
+        <tr><th>地點</th><th>天數</th><th>日均</th><th>小計</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ubud</td><td>1</td><td>$1,500</td><td>$1,500</td></tr>
+        <tr><td>Amankila</td><td>3</td><td>$2,000</td><td>$6,000</td></tr>
+        <tr><td>Gili Meno</td><td>3</td><td>$1,500</td><td>$4,500</td></tr>
+        <tr><td>Komodo</td><td>2</td><td>$1,500</td><td>$3,000</td></tr>
+        <tr><td>Fine dining × 1</td><td></td><td></td><td>$4,000</td></tr>
+        <tr class="row-total"><td></td><td></td><td></td><td>$19,000</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:0.78rem; color:var(--text-dim); margin-top:0.5rem;">峇里島在地吃很便宜（warung 2 人 NT$120-280），Amankila 早餐含在房價</p>
+  </div>
+
+  <!-- Misc -->
+  <div class="card">
+    <h3>📋 雜支</h3>
+    <table>
+      <tbody>
+        <tr><td>印尼落地簽 VOA × 2</td><td>$2,100</td></tr>
+        <tr><td>旅遊保險</td><td>$3,000</td></tr>
+        <tr><td>小費</td><td>$3,000</td></tr>
+        <tr><td>伴手禮</td><td>$4,000</td></tr>
+        <tr class="row-total"><td></td><td>$12,100</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider">~ ~ ~</div>
+
+<!-- ════════ PENDING ════════ -->
+<section>
+  <div class="section-title">待確認</div>
+  <p class="section-sub">等 Amankila 報價回來就能定案</p>
+
+  <div class="card">
+    <ul style="list-style:none; padding:0;">
+      <li style="padding:0.5rem 0; font-size:0.9rem;">⏳ Amankila 方案報價（Spiritual Journey / Discover Bali / 住三送一）</li>
+      <li style="padding:0.5rem 0; font-size:0.9rem;">⏳ 確認後更新住宿費用和總預算</li>
+      <li style="padding:0.5rem 0; font-size:0.9rem;">📌 華航機票是否先訂（$36,874/人，可能浮動）</li>
+      <li style="padding:0.5rem 0; font-size:0.9rem;">📌 BASK Gili Meno 6 月旺季建議早訂</li>
+      <li style="padding:0.5rem 0; font-size:0.9rem;">📌 科莫多包船建議提早預訂</li>
+    </ul>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  Honeymoon 2026 — Last updated: April 5, 2026
+</footer>
+
+</body>
+</html>
